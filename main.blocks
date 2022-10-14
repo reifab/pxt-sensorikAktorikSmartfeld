@@ -1,0 +1,11 @@
+<xml xmlns="https://developers.google.com/blockly/xml"><block type="pxt-on-start" id="1vAN^KTY`cLOS~T4#rRi" x="0" y="0"><statement name="HANDLER"><block type="serial_writeline" id="HW+`WykEU+X7V2.}9oOj"><comment pinned="false" h="80" w="160">serial.writeValue("UV", sensoren.getHalfWordUV())
+serial.writeValue("Poti", Math.round(sensoren.potentiometerGibProzent(AnalogPin.P2, AnalogPin.P16)))
+basic.pause(100)
+serial.writeValue("XXX", sensoren.getHalfWordXXX())
+serial.writeValue("Visible", sensoren.getHalfWord_Visible())
+basic.pause(250)
+serial.writeValue("Poti", Math.round(sensoren.potentiometerGibProzent(AnalogPin.P2, AnalogPin.P16)))</comment><value name="text"><block type="sensoren_initSunlight" id="5Q[cyn$kZL|4%4(9WjfF"></block></value></block></statement></block><block type="device_forever" id="q9ZxY8BADqK{ck3t{`I4" x="19" y="161"><comment pinned="false" h="80" w="160">basic.pause(250)
+serial.writeLine(sensoren.initSunlight())</comment><statement name="HANDLER"><block type="device_pause" id="AEO3wZ^eb{]abrDQ%U{]"><comment pinned="false" h="80" w="160">basic.pause(250)
+serial.writeValue("XXX", sensoren.getHalfWordXXX())
+basic.pause(250)
+serial.writeValue("UV", sensoren.getHalfWordUV())</comment><value name="pause"><shadow type="timePicker" id="4ZR3Mk@}1XP96!(VI[JW"><field name="ms">250</field></shadow></value><next><block type="serial_writevalue" id="qXBc:Pzr,ajycm!Ph4IV"><value name="name"><shadow type="text" id="4-kcM~9X6gx[A#s/M(r@"><field name="TEXT">UV1</field></shadow></value><value name="value"><block type="sensoren_getHalfWordUV" id="S}|A-.TVc(`AM!~~c]2b"></block></value><next><block type="serial_writevalue" id="@St0d#x^-s~?1R|O6nM~"><value name="name"><shadow type="text" id="($yLBgj#Ang%EWMP])*o"><field name="TEXT">UV2</field></shadow></value><value name="value"><block type="sensoren_hw837_getUV" id="SK3yk1b|(4aCX[Yq@2H`"><field name="pin">AnalogPin.P1</field></block></value></block></next></block></next></block></statement></block></xml>
