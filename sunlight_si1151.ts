@@ -294,12 +294,26 @@ namespace sensoren {
             //this.conf[3] = 0B11000001;      //Arduino
             //this.conf[3] = 0B11000000;      //Raspy
 
+            this.conf[0] = 13;
+            this.conf[1] = 0;
+            this.conf[2] = 0;
+            this.conf[3] = 0;
+
+            this.config_channel(0);
+
             this.conf[0] = 15;
             this.conf[1] = 0;
             this.conf[2] = 0;
             this.conf[3] = 0;
 
             this.config_channel(1);
+
+            this.conf[0] = 2;
+            this.conf[1] = 0;
+            this.conf[2] = 0;
+            this.conf[3] = 0;
+
+            this.config_channel(2);
 
             /*this.conf[0] = 0B00000000;
             this.conf[1] = 0B00000010,
@@ -308,8 +322,8 @@ namespace sensoren {
             this.config_channel(1);*/
 
             basic.pause(100);
-            let read_register;
-            let adr;
+            //let read_register;
+            //let adr;
 
             /*adr = 0x01;
             read_register = this.param_query(adr);
@@ -323,25 +337,23 @@ namespace sensoren {
 
         }
 
-        ReadHalfWord(): number {
+        ReadHalfWord_IR(): number {
+            this.param_set(ParameterAddress.CHAN_LIST, 0B000001);   //channel0 enabled
             this.send_command(CommandCodes.FORCE);
             let data: Buffer = pins.createBuffer(3);
             data[0] = this.read_register(UnitAddress.DEVICE_ADDRESS, RegisterAddress.HOSTOUT_0, 1);
             data[1] = this.read_register(UnitAddress.DEVICE_ADDRESS, RegisterAddress.HOSTOUT_1, 1);
             // Si115X::send_command(Si115X::PAUSE);
             // data[3] = data[0] * 256 + data[1];
-            return Math.round(data[0] * 256 + data[1]); //* 256 + data[1];
+            return data[0] * 256 + data[1]; //* 256 + data[1];
         }
 
-        ReadHalfWord_UV(): number {
-            this.send_command(CommandCodes.FORCE);
-            let data: Buffer = pins.createBuffer(3);
-            data[0] = this.read_register(UnitAddress.DEVICE_ADDRESS, RegisterAddress.HOSTOUT_0, 1);
-            data[1] = this.read_register(UnitAddress.DEVICE_ADDRESS, RegisterAddress.HOSTOUT_1, 1);
-            return Math.round(((data[0] * 256 + data[1]) / 3) * 0.0012 * 100) / 100;
-        }
+
+
+        //Kann keinen UV-Idx messen
 
         ReadHalfWord_VISIBLE(): number {
+            this.param_set(ParameterAddress.CHAN_LIST, 0B000001);   //channel0 enabled
             this.send_command(CommandCodes.FORCE);
             let data: Buffer = pins.createBuffer(3);
             data[0] = this.read_register(UnitAddress.DEVICE_ADDRESS, RegisterAddress.HOSTOUT_0, 1);
@@ -351,40 +363,24 @@ namespace sensoren {
             //serial.writeLine("data1 " + data[1]);
             //serial.writeLine("return " + (data[0] * 256 + data[1]) / 3);
 
-            return Math.round((data[0] * 256 + data[1]) / 3);
+            return (data[0] * 256 + data[1]) / 3;
 
         }
 
-        /*ReadHalfWord(): number {
-            this.send_command(CommandCodes.FORCE);
-            let data: Buffer = pins.createBuffer(3);
-            data[1] = this.read_register(UnitAddress.DEVICE_ADDRESS, RegisterAddress.HOSTOUT_1, 1);
-            data[2] = this.read_register(UnitAddress.DEVICE_ADDRESS, RegisterAddress.HOSTOUT_2, 1);
-            // Si115X::send_command(Si115X::PAUSE);
-            // data[3] = data[0] * 256 + data[1];
-            return data[2] * 256 + data[1]; //* 256 + data[1];
-        }
-
-        ReadHalfWord_UV(): number {
-            this.send_command(CommandCodes.FORCE);
-            let data: Buffer = pins.createBuffer(3);
-            data[1] = this.read_register(UnitAddress.DEVICE_ADDRESS, RegisterAddress.HOSTOUT_1, 1);
-            data[2] = this.read_register(UnitAddress.DEVICE_ADDRESS, RegisterAddress.HOSTOUT_2, 1);
-            return ((data[2] * 256 + data[1]) / 3) * 0.0012;
-        }
-
-        ReadHalfWord_VISIBLE(): number {
+        ReadHalfWord_VISIBLE_Alt(): number {
+            this.param_set(ParameterAddress.CHAN_LIST, 0B000010);   //channel0 enabled
             this.send_command(CommandCodes.FORCE);
             let data: Buffer = pins.createBuffer(3);
             data[0] = this.read_register(UnitAddress.DEVICE_ADDRESS, RegisterAddress.HOSTOUT_0, 1);
             data[1] = this.read_register(UnitAddress.DEVICE_ADDRESS, RegisterAddress.HOSTOUT_1, 1);
-            data[2] = this.read_register(UnitAddress.DEVICE_ADDRESS, RegisterAddress.HOSTOUT_2, 1);
             //serial.writeLine("RegisterAdress.Hostout0 " + RegisterAddress.HOSTOUT_0);
+            //serial.writeLine("data0 " + data[0]);
+            //serial.writeLine("data1 " + data[1]);
             //serial.writeLine("return " + (data[0] * 256 + data[1]) / 3);
-            //return (data[2] * 256 + data[1]) / 3;
-           
-            return Math.round((data[0] * 256 + data[1]) / 3 ); 
-        }*/
+
+            return (data[0] * 256 + data[1]) / 3;
+        }
+
 
         private ReadByte(Reg: number): number {
             let buf: Buffer = pins.createBuffer(1);

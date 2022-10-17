@@ -234,21 +234,10 @@ namespace sensoren {
     * 
     */
     //% group="SunlightSensor 101020089"
-    //% block="gib UV index [ ]"
-    //% subcategory="Optische Sensoren"
-    export function getHalfWordUV(): number {
-        return si1151.ReadHalfWord_UV();
-    }
-
-    /**
-    * get halfword sunlight
-    * 
-    */
-    //% group="SunlightSensor 101020089"
     //% block="gib sichtbares Licht [lm]"
     //% subcategory="Optische Sensoren"
     export function getHalfWord_Visible(): number {
-        return si1151.ReadHalfWord_VISIBLE();
+        return Math.round(si1151.ReadHalfWord_VISIBLE());
     }
 
     /**
@@ -258,8 +247,19 @@ namespace sensoren {
     //% group="SunlightSensor 101020089"
     //% block="gib IR [lm]"
     //% subcategory="Optische Sensoren"
-    export function getHalfWordXXX(): number {
-        return si1151.ReadHalfWord();
+    export function getHalfWordIR(): number {
+        return Math.round(si1151.ReadHalfWord_IR());
+    }
+
+    /**
+    * get halfword sunlight
+    * 
+    */
+    //% group="SunlightSensor 101020089"
+    //% block="gib sichtbares Licht [lm] ALT"
+    //% subcategory="Optische Sensoren"
+    export function getHalfWordVisibleOld(): number {
+        return Math.round(si1151.ReadHalfWord_VISIBLE_Alt());
     }
 
     /**
@@ -267,16 +267,16 @@ namespace sensoren {
     *
     **/
     //% group="HW-837 UV-Sensor"
-    //% block="gib UV index [ ] HW-837 |%pin"
+    //% block="gib UV index [] |%pin"
     //% subcategory="Optische Sensoren"
     export function hw837_getUV(pin: AnalogPin): number {
 
-        let RangeInAnalog = 0;
+        let rangeInAnalog = 0;
         let sensorVoltage = 0;
         let uvIndex = 0;
 
-        RangeInAnalog = pins.analogReadPin(pin);
-        sensorVoltage = RangeInAnalog / 1024 * 3.3;
+        rangeInAnalog = pins.analogReadPin(pin);
+        sensorVoltage = rangeInAnalog / 1024 * 3.3;
         uvIndex = Math.round(sensorVoltage / 0.1 *1000)/1000;
 
         basic.pause(50);
