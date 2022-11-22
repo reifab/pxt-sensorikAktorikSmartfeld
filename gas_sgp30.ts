@@ -133,7 +133,7 @@ let CRC8_INIT = 0xFF;
 
 let crc_flag = 0;
 
-namespace sensoren {
+namespace smartfeldSensoren {
 
     export class SGP30 {
 

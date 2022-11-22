@@ -25,7 +25,7 @@ enum GroveGesture {
 }
 
 
-namespace sensoren {
+namespace smartfeldSensoren {
 
     export class PAJ7620 {
         private paj7620WriteReg(addr: number, cmd: number) {

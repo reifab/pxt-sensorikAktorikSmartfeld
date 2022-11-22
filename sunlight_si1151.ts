@@ -111,7 +111,7 @@ enum ParameterAddress {
     BURST = 0x2B
 };
 
-namespace sensoren {
+namespace smartfeldSensoren {
 
     export class SI1151 {
 

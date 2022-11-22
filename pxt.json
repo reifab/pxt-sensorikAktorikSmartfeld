@@ -5,7 +5,9 @@
         "core": "*",
         "radio": "*",
         "microphone": "*",
-        "smarttools": "github:51bit/smarttools#v0.3.4"
+        "smarttools": "github:51bit/smarttools#v0.3.4",
+        "OLED12864_I2C": "github:makecode-extensions/oled12864_i2c#v1.5.0",
+        "SSD1306_OLED": "github:tinkertanker/pxt-oled-ssd1306#v2.0.13"
     },
     "files": [
         "main.blocks",
@@ -16,7 +18,8 @@
         "gas_bme680.ts",
         "sensoren.ts",
         "gas_sgp30.ts",
-        "sunlight_si1151.ts"
+        "sunlight_si1151.ts",
+        "aktoren.ts"
     ],
     "testFiles": [
         "test.ts"

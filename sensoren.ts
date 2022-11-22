@@ -4,7 +4,7 @@
  */
 
 //% color="#FF33B2" icon="\uf185"
-namespace sensoren {
+namespace smartfeldSensoren {
 
     const gestureEventId = 3100;
     let lastGesture = GroveGesture.None;
@@ -77,7 +77,7 @@ namespace sensoren {
     }
 
     //% group="Lichtschranke 101020004"
-    //% block="Taster betaetigt |%pin"
+    //% block="Taster betätigt |%pin"
     //% subcategory="Mechanische Sensoren"
     export function microswitchActuated(pin: DigitalPin): number {
 
