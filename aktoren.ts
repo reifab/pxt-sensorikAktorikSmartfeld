@@ -187,4 +187,30 @@ namespace smartfeldAktoren {
         strip.shift();
     }
 
+
+//--------------------------------------------------------------------------------------------------------
+
+    /**
+     * Activate electromagnet
+    */
+    //% subcategory="Elektromagnet" weight=31
+    //% group="Elektromagnet 101020073"
+    //% block="Elektromagnet ein |%pin"
+    export function electromagnetEin(pin: DigitalPin) {
+
+        pins.digitalWritePin(pin, 1);
+    }
+    /**
+     * Deactivate electromagnet
+    */
+    //% subcategory="Elektromagnet" weight=30
+    //% group="Elektromagnet 101020073"
+    //% block="Elektromagnet aus |%pin"
+    export function electromagnetAus(pin: DigitalPin) {
+
+        pins.digitalWritePin(pin, 0);
+
+        basic.pause(50);
+    }
+
 }
