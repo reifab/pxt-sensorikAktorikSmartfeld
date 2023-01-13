@@ -63,7 +63,7 @@ namespace smartfeldSensoren {
         return fieldDetected;
     }
 
-    //% group="Kraftsensor 101020004"
+    //% group="Kraftsensor 101020553"
     //% block="messe Kraft |%pin"
     //% subcategory="Mechanische Sensoren" weight=50
     export function kraftsensorGibKraft(pin: AnalogPin): number {
@@ -76,7 +76,7 @@ namespace smartfeldSensoren {
         return RangeInAnalog;
     }
 
-    //% group="Lichtschranke 101020004"
+    //% group="Mikroschalter 102020143"
     //% block="Taster betätigt |%pin"
     //% subcategory="Mechanische Sensoren"
     export function microswitchActuated(pin: DigitalPin): number {

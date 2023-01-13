@@ -83,6 +83,7 @@ namespace smartfeldAktoren {
     //% block="erstelle Strip " block="NeoPixel at pin %pin|with %numleds|leds as %mode"
     //% parts="neopixel"
     //% trackArgs=0,2
+    //% numleds.defl=60
     //% blockSetVariable=strip
     export function create(pin: DigitalPin, numleds: number, mode: NeoPixelMode): neopixel.Strip {
         return neopixel.create(pin, numleds, mode);
@@ -96,7 +97,6 @@ namespace smartfeldAktoren {
     //% subcategory="LED" weight=99 
     //% group="RGB Strip 104020131"
     //% blockId="neopixel_range" block="%strip|range from %start|with %length|leds"
-    //% strip.defl=strip
     //% blockSetVariable=range
     export function rangeInAnalog(start: number, length: number): neopixel.Strip {
         return strip.range(start, length);
@@ -109,7 +109,6 @@ namespace smartfeldAktoren {
     //% subcategory="LED" weight=95 
     //% group="RGB Strip 104020131"
     //% blockId="neopixel_set_strip_color" block="%strip|show color %rgb=neopixel_colors"
-    //% strip.defl=strip
     export function showColor(rgb: number) {
         return strip.showColor(rgb);
     }
@@ -129,7 +128,6 @@ namespace smartfeldAktoren {
     //% subcategory="LED" weight=85 
     //% group="RGB Strip 104020131" 
     //% blockId="neopixel_set_strip_rainbow" block="%strip|show rainbow from %startHue|to %endHue"
-    //% strip.defl=strip 
     export function showRainbow(startHue: number = 1, endHue: number = 360) {
         return strip.showRainbow(startHue, endHue);
     }
@@ -143,7 +141,6 @@ namespace smartfeldAktoren {
     //% subcategory="LED" weight=84 
     //% group="RGB Strip 104020131"
     //% blockId=neopixel_show_bar_graph block="%strip|show bar graph of %value|up to %high"
-    //% strip.defl=strip
     export function showBarGraph(value: number, high: number): void {
         return strip.showBarGraph(value, high);
     }
@@ -151,35 +148,57 @@ namespace smartfeldAktoren {
     /**
      * Send all the changes to the strip.
      */
-    //% strip.defl=strip
+    //% subcategory="LED" weight=82 
+    //% group="RGB Strip 104020131"
+    //% blockId="neopixel_show" block="%strip|show" blockGap=8
     export function show() {
         return strip.show();
     }
 
     /**
      * Turn off all LEDs.
-     * You need to call ``show`` to make the changes visible.
+     * !!!You need to call ``show`` to make the changes visible!!!
      */
     //% subcategory="LED" weight=76 
     //% group="RGB Strip 104020131"
     //% blockId="neopixel_clear" block="%strip|clear"
-    //% strip.defl=strip
     export function clear(): void {
         strip.clear();
-        strip.show();
+    }
+
+    /**
+     * Sets the number of pixels in a matrix shaped strip
+     * @param width number of pixels in a row
+     */
+    //% subcategory="LED" weight=70 
+    //% group="RGB Strip 104020131"
+    //% blockId="neopixel_set_pixel_color" block="%strip|set pixel color at %pixeloffset|to %rgb=neopixel_colors"
+    export function setPixelColor(pixeloffset: number, rgb: number): void {
+        strip.setPixelColor(pixeloffset, rgb);
     }
 
     /**
      * Shift LEDs forward and clear with zeros.
-     * You need to call ``show`` to make the changes visible.
+     * !!!You need to call ``show`` to make the changes visible!!!
      * @param offset number of pixels to shift forward, eg: 1
     */
     //% subcategory="LED" weight=40 
     //% group="RGB Strip 104020131"
-    //% blockId="neopixel_shift" block="%strip|shift pixels by %offset" blockGap=8
-    //% strip.defl=strip
+    //% blockId="neopixel_shift" //% block="%strip|shift pixels by %offset" blockGap=8
     export function shift(): void {
         strip.shift();
+    }
+
+    /**
+     * Set the brightness of the strip. 
+     * !!!This flag only applies to future operation!!!
+     * @param brightness a measure of LED brightness in 0-255. eg: 255
+     */
+    //% subcategory="LED" weight=40 
+    //% group="RGB Strip 104020131"
+    //% blockId="neopixel_set_brightness" block="%strip|set brightness %brightness" blockGap=8
+    export function setBrightness(brightness: number): void {
+        strip.setBrightness(brightness);
     }
 
 //--------------------------------------------------------------------------------------------------------
@@ -263,7 +282,7 @@ namespace smartfeldAktoren {
 
     //% subcategory="Display" weight=20 
     //% group="OLED Display 0.96'', SSD1306"
-    //% block="init Display Breite $width Höhe $height"
+    //% block="init Display Breite %width Höhe %height"
     //% width.defl=128
     //% height.defl=64
     export function displayInit(width: number, height: number){
@@ -272,28 +291,28 @@ namespace smartfeldAktoren {
 
     //% subcategory="Display" weight=19 
     //% group="OLED Display 0.96'', SSD1306"
-    //% block="schreibe String $str"
+    //% block="schreibe String %str"
     export function displayWriteStr(str: string){
         return OLED.writeString(str);
     }
 
     //% subcategory="Display" weight=18 
     //% group="OLED Display 0.96'', SSD1306"
-    //% block="schreibe Nummer $num"
+    //% block="schreibe Nummer %num"
     export function displayWriteNum(num: number) {
         return OLED.writeNum(num);
     }
 
     //% subcategory="Display" weight=17 
     //% group="OLED Display 0.96'', SSD1306"
-    //% block="schreibe String und Zeilenumbruch $str"
+    //% block="schreibe String und Zeilenumbruch %str"
     export function displayWriteStrNewLine(str: string) {
         return OLED.writeStringNewLine(str);
     }
 
     //% subcategory="Display" weight=16 
     //% group="OLED Display 0.96'', SSD1306"
-    //% block="schreibe Nummer und Zeilenumbruch $num"
+    //% block="schreibe Nummer und Zeilenumbruch %num"
     export function displayWriteNumNewLine(num: number) {
         return OLED.writeNumNewLine(num);
     }
@@ -314,21 +333,21 @@ namespace smartfeldAktoren {
 
     //% subcategory="Display" weight=13 
     //% group="OLED Display 0.96'', SSD1306"
-    //% block="zeichne Ladebalken bei $percent Prozent"
+    //% block="zeichne Ladebalken bei %percent Prozent"
     export function displayLoadingBar(percent: number){
         return OLED.drawLoading(percent);
     }
 
     //% subcategory="Display" weight=12 
     //% group="OLED Display 0.96'', SSD1306"
-    //% block="zeichne Linie von:|x: $x0 y: $y0 bis| x: $x1 y: $y1""
+    //% block="zeichne Linie von:|x: %x0 y: %y0 bis| x: %x1 y: %y1""
     export function displayDrawLine(x0: number, y0: number, x1: number, y1: number)  {
         return OLED.drawLine(x0,y0,x1,y1);
     }
 
     //% subcategory="Display" weight=11 
     //% group="OLED Display 0.96'', SSD1306"
-    //% block="zeichne Rechteck von:|x: $x0 y: $y0 bis| x: $x1 y: $y1""
+    //% block="zeichne Rechteck von:|x: %x0 y: %y0 bis| x: %x1 y: %y1""
     export function displaydrawRectangle(x0: number, y0: number, x1: number, y1: number) {
         return OLED.drawRectangle(x0, y0, x1, y1);
     }
