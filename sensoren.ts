@@ -3,7 +3,7 @@
  * Organize your blocks in groups
  */
 
-//% color="#FF33B2" icon="\uf185"
+//% color="#0fbc11" icon="\uf185"
 namespace smartfeldSensoren {
 
     const gestureEventId = 3100;
