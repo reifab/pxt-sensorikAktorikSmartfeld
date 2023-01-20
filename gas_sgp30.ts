@@ -369,7 +369,7 @@ namespace smartfeldSensoren {
         /**
             Check some registers to get data of SGP30
         */
-        init(): string {
+        init() {
             let initString;
             basic.pause(500);
             
@@ -381,7 +381,7 @@ namespace smartfeldSensoren {
             }
 
             basic.pause(200);
-            return initString;
+            serial.writeLine(initString);
         }
     }
 }

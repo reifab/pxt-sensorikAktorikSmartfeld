@@ -169,7 +169,7 @@ namespace smartfeldSensoren {
     //% subcategory="Umweltsensoren" weight=100
     export function initGas() {
         //if (!sgp30) {
-        let string = sgp30.init();
+        sgp30.init();
     }
 
     /**
