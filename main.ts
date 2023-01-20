@@ -1,8 +1,4 @@
-smartfeldSensoren.initGas()
-basic.pause(1000)
-basic.forever(function () {
-    basic.pause(1000)
-    serial.writeValue("tVOC", smartfeldSensoren.measReadtVOC())
-    basic.pause(1000)
-    serial.writeValue("CO2eq", smartfeldSensoren.measReadCO2eq())
-})
+basic.showIcon(IconNames.SmallDiamond)
+basic.pause(100)
+basic.showIcon(IconNames.Diamond)
+basic.pause(100)
