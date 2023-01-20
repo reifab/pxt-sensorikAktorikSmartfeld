@@ -2,25 +2,25 @@
  * Grove Gestures
  */
 enum GroveGesture {
-    //% block=None
+    //% block=Nichts
     None = 0,
-    //% block=Right
+    //% block=Rechts
     Right = 1,
-    //% block=Left
+    //% block=Links
     Left = 2,
-    //% block=Up
+    //% block=Rauf
     Up = 3,
-    //% block=Down
+    //% block=Runter
     Down = 4,
-    //% block=Forward
+    //% block=Vorwärts
     Forward = 5,
-    //% block=Backward
+    //% block=Rückwärts
     Backward = 6,
-    //% block=Clockwise
+    //% block=Uhrzeigersinn
     Clockwise = 7,
-    //% block=Anticlockwise
+    //% block=Gegenuhrzeigersinn
     Anticlockwise = 8,
-    //% block=Wave
+    //% block=Welle
     Wave = 9
 }
 

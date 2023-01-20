@@ -75,7 +75,6 @@ namespace smartfeldAktoren {
         pins.digitalWritePin(pin, 0)
     }
 
-
 //--------------------------------------------------------------------------------------------------------
 
     //% subcategory="LED" weight=100 

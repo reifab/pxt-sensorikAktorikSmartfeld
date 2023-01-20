@@ -367,18 +367,21 @@ namespace smartfeldSensoren {
 
 
         /**
-                   Check some registers to get data of SGP30, this step is not necessary for
+            Check some registers to get data of SGP30
         */
         init(): string {
-            let num;
-            num = this.sgp30ReadID();
-            num = num + this.sgp30GetFeatureSetVersion();
-
-            this.sgp30_iaq_init();
-
+            let initString;
+            basic.pause(500);
+            
+            for (let index = 0; index < 3; index++) {
+                initString = this.sgp30ReadID();
+                initString = initString + this.sgp30GetFeatureSetVersion();
+                this.sgp30_iaq_init();
+                basic.pause(500);
+            }
 
             basic.pause(200);
-            return num;
+            return initString;
         }
     }
 }

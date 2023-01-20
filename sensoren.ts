@@ -131,7 +131,7 @@ namespace smartfeldSensoren {
       * Useful for comparisons
       */
     //% group="Gestensensor 101020083"
-    //% blockId=ggesture block="%key"
+    //% blockId=ggesture block="Gestik %key"
     //% subcategory="Optische Sensoren"
     export function ggesture(g: GroveGesture): number {
         return g;
@@ -167,9 +167,9 @@ namespace smartfeldSensoren {
     //% group="Gassensor 101020512"
     //% block="init Gassensor"
     //% subcategory="Umweltsensoren" weight=100
-    export function initGas(): string {
+    export function initGas() {
         //if (!sgp30) {
-        return sgp30.init();
+        sgp30.init();
     }
 
     /**
@@ -197,7 +197,7 @@ namespace smartfeldSensoren {
     }
 
     //% group="Potentiometer 101020036"
-    //% block="Prozentzahl |%pin |%led"
+    //% block="Poti Prozentzahl Pin |%pin LED |%led"
     //% pin.defl=AnalogPin.P2 led.defl=AnalogPin.P16
     //% subcategory="Restliche Sensoren"
     export function potentiometerGibProzent(pin: AnalogPin, led: AnalogPin): number {
