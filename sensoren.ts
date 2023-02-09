@@ -218,22 +218,19 @@ namespace smartfeldSensoren {
     * init Grove Sunlight module
     * 
     */
-    //% group="SunlightSensor 101020089"
-    //% block="init sunlight sensor"
+    //% group="Sonnenlicht Sensor 101020089"
+    //% block="init Sonnenlicht Sensor"
     //% subcategory="Optische Sensoren"
-    export function initSunlight(): string {
+    export function initSunlight() {
         //if (!sgp30) {
-        if (si1151.init()) {
-            return "Yes";
-        }
-        return "No";
+        si1151.init();
     }
 
     /**
     * get halfword sunlight
     * 
     */
-    //% group="SunlightSensor 101020089"
+    //% group="Sonnenlicht Sensor 101020089"
     //% block="gib sichtbares Licht [lm]"
     //% subcategory="Optische Sensoren"
     export function getHalfWord_Visible(): number {
@@ -244,22 +241,11 @@ namespace smartfeldSensoren {
     * get halfword sunlight
     * 
     */
-    //% group="SunlightSensor 101020089"
+    //% group="Sonnenlicht Sensor 101020089"
     //% block="gib IR [lm]"
     //% subcategory="Optische Sensoren"
     export function getHalfWordIR(): number {
         return Math.round(si1151.ReadHalfWord_IR());
-    }
-
-    /**
-    * get halfword sunlight
-    * 
-    */
-    //% group="SunlightSensor 101020089"
-    //% block="gib sichtbares Licht [lm] ALT"
-    //% subcategory="Optische Sensoren"
-    export function getHalfWordVisibleOld(): number {
-        return Math.round(si1151.ReadHalfWord_VISIBLE_Alt());
     }
 
     /**

@@ -79,7 +79,7 @@ namespace smartfeldAktoren {
 
     //% subcategory="LED" weight=100 
     //% group="RGB Strip 104020131"
-    //% block="erstelle Strip " block="NeoPixel at pin %pin|with %numleds|leds as %mode"
+    //% block="erstelle Strip " block="NeoPixel auf Pin %pin|mit %numleds|LEDs als %mode"
     //% parts="neopixel"
     //% trackArgs=0,2
     //% numleds.defl=60
@@ -96,7 +96,7 @@ namespace smartfeldAktoren {
     //% subcategory="LED" weight=99 
     //% group="RGB Strip 104020131"
     //% blockId="neopixel_range" block="%strip|range from %start|with %length|leds"
-    //% blockSetVariable=range
+    //% blockSetVariable=Bereich
     export function rangeInAnalog(start: number, length: number): neopixel.Strip {
         return strip.range(start, length);
     }
@@ -114,7 +114,7 @@ namespace smartfeldAktoren {
 
     //% subcategory="LED" weight=90 
     //% group="RGB Strip 104020131" 
-    //% block="setze RGB Wert " block="red %red|green %green|blue %blue"
+    //% block="setze RGB Wert " block="rot %red|grün %green|blau %blue"
     export function rgb(red: number, green: number, blue: number): number {
         return neopixel.rgb(red, green, blue);
     }
@@ -207,7 +207,7 @@ namespace smartfeldAktoren {
     */
     //% subcategory="LED" weight=90 
     //% group="Verkettbare RGB 104020048"
-    //% block="erstelle Kette " block="Verkettbare RGB bei Clock Pin %clkPin|und Daten Pin %dataPin|mit  %numberOfLeds RGBs"
+    //% block="Verkettbare RGB bei Clock Pin %clkPin|und Daten Pin %dataPin|mit  %numberOfLeds RGBs"
     //% trackArgs=0,2
     //% blockSetVariable=Kette
     //% clkPin.defl=DigitalPin.P0 dataPin.defl=DigitalPin.P14 numberOfLeds.defl=1
@@ -215,14 +215,14 @@ namespace smartfeldAktoren {
         return chain.init(clkPin, dataPin, numberOfLeds) 
     }
 
+    //% subcategory="LED" weight=89 
+    //% group="Verkettbare RGB 104020048"
     export function setOneRGB(numberOfLED: number, red: number, green: number, blue: number) {
         return chain.setColorJustOne(numberOfLED, red, green, blue);
     }
 
-    export function setColorOnly(red: number, green: number, blue: number) {
-        return chain.setColorOneRGB(red, green, blue);
-    }
-
+    //% subcategory="LED" weight=88 
+    //% group="Verkettbare RGB 104020048"
     export function setColorWholeChain(red: number, green: number, blue: number) {
         return chain.setColorChain(red, green, blue);
     }
@@ -339,14 +339,14 @@ namespace smartfeldAktoren {
 
     //% subcategory="Display" weight=12 
     //% group="OLED Display 0.96'', SSD1306"
-    //% block="zeichne Linie von:|x: %x0 y: %y0 bis| x: %x1 y: %y1""
+    //% block="zeichne Linie von:|x: %x0 y: %y0 bis:| x: %x1 y: %y1""
     export function displayDrawLine(x0: number, y0: number, x1: number, y1: number)  {
         return OLED.drawLine(x0,y0,x1,y1);
     }
 
     //% subcategory="Display" weight=11 
     //% group="OLED Display 0.96'', SSD1306"
-    //% block="zeichne Rechteck von:|x: %x0 y: %y0 bis| x: %x1 y: %y1""
+    //% block="zeichne Rechteck von:|x: %x0 y: %y0 bis:| x: %x1 y: %y1""
     export function displaydrawRectangle(x0: number, y0: number, x1: number, y1: number) {
         return OLED.drawRectangle(x0, y0, x1, y1);
     }

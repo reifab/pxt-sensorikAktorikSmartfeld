@@ -367,21 +367,6 @@ namespace smartfeldSensoren {
 
         }
 
-        ReadHalfWord_VISIBLE_Alt(): number {
-            this.param_set(ParameterAddress.CHAN_LIST, 0B000010);   //channel0 enabled
-            this.send_command(CommandCodes.FORCE);
-            let data: Buffer = pins.createBuffer(3);
-            data[0] = this.read_register(UnitAddress.DEVICE_ADDRESS, RegisterAddress.HOSTOUT_0, 1);
-            data[1] = this.read_register(UnitAddress.DEVICE_ADDRESS, RegisterAddress.HOSTOUT_1, 1);
-            //serial.writeLine("RegisterAdress.Hostout0 " + RegisterAddress.HOSTOUT_0);
-            //serial.writeLine("data0 " + data[0]);
-            //serial.writeLine("data1 " + data[1]);
-            //serial.writeLine("return " + (data[0] * 256 + data[1]) / 3);
-
-            return (data[0] * 256 + data[1]) / 3;
-        }
-
-
         private ReadByte(Reg: number): number {
             let buf: Buffer = pins.createBuffer(1);
 
