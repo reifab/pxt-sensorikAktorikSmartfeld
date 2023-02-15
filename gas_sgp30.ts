@@ -324,8 +324,8 @@ namespace smartfeldSensoren {
             let profile = SGP_PROFILE_IAQ_MEASURE9();
 
             if (STATUS_OK == this.sgp30_run_profile(profile)) {
-                this.tvoc_ppb = this.word_buf[0] << 8 | this.word_buf[1];
-                this.co2_eq_ppm = this.word_buf[3] << 8 | this.word_buf[4]; //letztes bit crc
+                this.co2_eq_ppm = this.word_buf[0] << 8 | this.word_buf[1];
+                this.tvoc_ppb = this.word_buf[3] << 8 | this.word_buf[4]; //letztes bit crc
 
                 return STATUS_OK;
             }

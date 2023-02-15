@@ -20,7 +20,8 @@
         "gas_sgp30.ts",
         "sunlight_si1151.ts",
         "aktoren.ts",
-        "RGB_p9813.ts"
+        "RGB_p9813.ts",
+        "main.py"
     ],
     "testFiles": [
         "test.ts"
@@ -36,5 +37,5 @@
     "supportedTargets": [
         "microbit"
     ],
-    "preferredEditor": "tsprj"
+    "preferredEditor": "blocksprj"
 }

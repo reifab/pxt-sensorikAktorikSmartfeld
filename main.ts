@@ -1,4 +1,11 @@
-basic.showIcon(IconNames.SmallDiamond)
-basic.pause(100)
-basic.showIcon(IconNames.Diamond)
-basic.pause(100)
+smartfeldSensoren.initGas()
+basic.forever(function () {
+    serial.writeValue("CO2", smartfeldSensoren.measReadCO2eq())
+    serial.writeValue("tVOC", smartfeldSensoren.measReadtVOC())
+    if (smartfeldSensoren.measReadCO2eq() < 50) {
+        basic.showIcon(IconNames.Happy)
+    } else {
+        basic.showIcon(IconNames.Happy)
+    }
+    basic.pause(1000)
+})
