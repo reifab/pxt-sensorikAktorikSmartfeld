@@ -6,6 +6,7 @@ namespace smartfeldAktoren {
 
     let strip = new neopixel.Strip();
     let chain = new smartfeldAktoren.Chain();
+    let pig = new smartfeldAktoren.Switchpig();
 
 //--------------------------------------------------------------------------------------------------------
 
@@ -257,6 +258,7 @@ namespace smartfeldAktoren {
     /**
      * Activate relay
     */
+    
     //% subcategory="Relais" weight=29 
     //% group="Relais 103020005 "
     //% block="Relais ein |%pin"
@@ -351,4 +353,26 @@ namespace smartfeldAktoren {
         return OLED.drawRectangle(x0, y0, x1, y1);
     }
 
+    //--------------------------------------------------------------------------------------------------------
+
+    //% subcategory="Schaltschwein" weight=19 
+    //% group="Prog. Empfängerschwein"
+    //% block="Schalte Steckdose auf der %ch %state"
+    export function myProgramReceiver(rfGroupID: MyEnumGroupIDs): void {
+        pig.programReceiver(rfGroupID);
+    }
+
+    //% subcategory="Schaltschwein" weight=18 
+    //% group="Prog. Fernsteuerung"
+    //% block="Schalte Steckdose auf der %ch %state"
+    export function mySwitchPlug(ch: MyEnumPlugLabel, state: MyEnumState): void {
+        pig.switchPlug(ch, state);
+    }
+
+    //% subcategory="Schaltschwein" weight=17 
+    //% group="Prog. Fernsteuerung"
+    //% block="Schalte Steckdose auf der %ch %state"
+    export function mySelectRfGroupID(rfGroupID: MyEnumGroupIDs): void {
+        pig.selectRfGroupID(rfGroupID);
+    }
 }

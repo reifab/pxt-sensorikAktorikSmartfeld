@@ -21,7 +21,8 @@
         "sunlight_si1151.ts",
         "aktoren.ts",
         "RGB_p9813.ts",
-        "main.py"
+        "main.py",
+        "schaltschwein.ts"
     ],
     "testFiles": [
         "test.ts"
@@ -37,5 +38,5 @@
     "supportedTargets": [
         "microbit"
     ],
-    "preferredEditor": "blocksprj"
+    "preferredEditor": "tsprj"
 }
