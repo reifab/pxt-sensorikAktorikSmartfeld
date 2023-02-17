@@ -44,8 +44,6 @@ namespace smartfeldAktoren {
          * Setze diese Funktion beim Start ein, um den Empfänger zu programmieren. 
          * @param rfGroupID Schweinchenname
          */
-        //% block="Taufe das Schwein auf den Namen %rfGroupID"
-        //% group="Prog. Empfängerschwein"
         programReceiver(rfGroupID: MyEnumGroupIDs): void {
             basic.showLeds(`
             # # # # #
@@ -82,8 +80,6 @@ namespace smartfeldAktoren {
          * @param ch Steckdose, welcher geschaltet werden soll
          * @param state Zustand der Steckdose (Ein oder Aus)
          */
-        //% block="Schalte Steckdose auf der %ch %state"
-        //% group="Prog. Fernsteuerung"
         switchPlug(ch: MyEnumPlugLabel, state: MyEnumState): void {
             // Add code 
             if (state == MyEnumState.ON) {
@@ -106,8 +102,6 @@ namespace smartfeldAktoren {
          * Es genügt, die Auswahl einmalig beim Start des Programms vorzunehmen.
          * @param rfGroupID Wahl des Schweinchens, das bedient werden soll.
          */
-        //% block="Wähle Schweinchen mit dem Namen %rfGroupID"
-        //% group="Prog. Fernsteuerung"
         selectRfGroupID(rfGroupID: MyEnumGroupIDs): void {
             radio.setGroup(rfGroupID);
         }
