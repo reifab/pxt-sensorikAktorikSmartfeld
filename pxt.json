@@ -22,7 +22,8 @@
         "aktoren.ts",
         "RGB_p9813.ts",
         "main.py",
-        "schaltschwein.ts"
+        "schaltschwein.ts",
+        "tcs34725.ts"
     ],
     "testFiles": [
         "test.ts"

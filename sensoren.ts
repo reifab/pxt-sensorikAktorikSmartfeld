@@ -12,6 +12,7 @@ namespace smartfeldSensoren {
     //let bme680 = new BME680();
     let sgp30 = new SGP30();
     let si1151 = new SI1151();
+    let tcs34725 = new TCS34725();
 
     //% group="Ultraschallsensor 101020010"
     //% block="Distanz in cm |%pin"
@@ -249,6 +250,23 @@ namespace smartfeldSensoren {
     }
 
     /**
+    * start Grove Color sensor
+    */
+    //% group="Farbsensor 101020341"
+    //% blockId="start_colorSensor" block="Start Sensor mit Integrationszeit %atime und Verstärkung %gain"
+    //% subcategory="Optische Sensoren"
+    export function start(atime: TCS34725_ATIME, gain: TCS34725_AGAIN) {
+        tcs34725.start(atime, gain);
+    }
+
+    //% group="Farbsensor 101020341"
+    //% blockId="getSensorData" block="Gib Farb Daten %colorId"
+    //% subcategory="Optische Sensoren"
+    export function getSensorData(colorId: RGB): number {
+        return tcs34725.getSensorData(colorId);
+    }
+
+    /**
     * init HW-837 UV module
     *
     **/
@@ -282,4 +300,8 @@ namespace smartfeldSensoren {
         basic.pause(50);
         return moisture;
     }
+
+
+
+
 }

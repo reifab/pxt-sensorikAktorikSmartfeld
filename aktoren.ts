@@ -201,6 +201,31 @@ namespace smartfeldAktoren {
         strip.setBrightness(brightness);
     }
 
+    /**
+     * Sets the number of pixels in a matrix shaped strip
+     * @param width number of pixels in a row
+    */
+    //% subcategory="LED" weight=45 
+    //% group="RGB Matrix"
+    //% blockId=neopixel_set_matrix_width block="%strip|set matrix width %width"
+    export function setMatrixWidth(width: number) {
+        strip.setMatrixWidth(width);
+    }
+
+    /**
+     * Set LED to a given color (range 0-255 for r, g, b) in a matrix shaped strip
+     * You need to call ``show`` to make the changes visible.
+     * @param x horizontal position
+     * @param y horizontal position
+     * @param rgb RGB color of the LED
+     */
+    //% subcategory="LED" weight=44 
+    //% group="RGB Matrix"
+    //% blockId="neopixel_set_matrix_color" block="%strip|set matrix color at x %x|y %y|to %rgb=neopixel_colors"
+    export function setMatrixColor(x: number, y: number, rgb: number) {
+        strip.setMatrixColor(x,y,rgb);
+    }
+
 //--------------------------------------------------------------------------------------------------------
 
     /**
