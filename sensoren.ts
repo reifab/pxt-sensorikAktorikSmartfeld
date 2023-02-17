@@ -177,7 +177,7 @@ namespace smartfeldSensoren {
     * 
     */
     //% group="Gassensor 101020512"
-    //% block="messe tVOC"
+    //% block="gib tVOC"
     //% subcategory="Umweltsensoren" weight=60
     export function measReadtVOC(): number {
         //if (!sgp30) {
@@ -189,7 +189,7 @@ namespace smartfeldSensoren {
     * 
     */
     //% group="Gassensor 101020512"
-    //% block="messe CO2eq"
+    //% block="gib CO2eq"
     //% subcategory="Umweltsensoren" weight=40
     export function measReadCO2eq(): number {
         //if (!sgp30) {
@@ -267,5 +267,19 @@ namespace smartfeldSensoren {
 
         basic.pause(50);
         return uvIndex;
+    }
+
+    //% group="Bodenfeuchtesensor 101020614"
+    //% block="gib Bodenfeuchte Pin |%pin"
+    //% pin.defl=AnalogPin.P0
+    //% subcategory="Umweltsensoren"
+    export function bodenfeuchteGibFeuchte(pin: AnalogPin): number {
+
+        let moisture = 0;
+
+        moisture = pins.analogReadPin(pin);
+
+        basic.pause(50);
+        return moisture;
     }
 }
