@@ -13,6 +13,7 @@ namespace smartfeldSensoren {
     let sgp30 = new SGP30();
     let si1151 = new SI1151();
     let tcs34725 = new TCS34725();
+    let mpr121 = new MPR121();
 
     //% group="Ultraschallsensor 101020010"
     //% block="Distanz in cm |%pin"
@@ -200,7 +201,7 @@ namespace smartfeldSensoren {
     //% group="Potentiometer 101020036"
     //% block="Poti Prozentzahl Pin |%pin LED |%led"
     //% pin.defl=AnalogPin.P2 led.defl=AnalogPin.P16
-    //% subcategory="Restliche Sensoren"
+    //% subcategory="Mechanische Sensoren"
     export function potentiometerGibProzent(pin: AnalogPin, led: AnalogPin): number {
 
         let duration = 0;
@@ -301,7 +302,53 @@ namespace smartfeldSensoren {
         return moisture;
     }
 
+    //% group="Berührungssensor 101020872"
+    //% blockId="mpr121_touch_is_touch_sensor_touched" block="%CH | wird berührt"
+    //% subcategory="Mechanische Sensoren" weight=50
+    export function isTouched(sensor: TouchSensor): boolean {
+        return mpr121.isTouched(sensor);
+    }
 
 
+    //% group="Berührungssensor 101020872"
+    //% blockId=mpr121_touch_on_touch_sensor_down
+    //% block="wenn | %sensor | berührt"
+    //% sensor.fieldEditor="gridpicker" sensor.fieldOptions.columns=3
+    //% sensor.fieldOptions.tooltips="false"
+    //% subcategory="Mechanische Sensoren" weight=65
+    export function onTouchSensorTouched(sensor: TouchSensor, handler: () => void) {
+        mpr121.onTouchSensorReleased(sensor, handler);
+    }
 
+    //% group="Berührungssensor 101020872"
+    //% blockId=mpr121_touch_on_touch_sensor_released
+    //% block="wenn | %sensor | losgelassen"
+    //% subcategory="Mechanische Sensoren" weight=64
+    export function onTouchSensorReleased(sensor: TouchSensor, handler: () => void){
+        mpr121.onTouchSensorReleased(sensor, handler);
+    }
+
+    //% group="Berührungssensor 101020872"
+    //% blockId=mpr121_touch_on_touched
+    //% block="wenn beliebiger CH berührt"
+    //% subcategory="Mechanische Sensoren" weight=60
+    export function onAnyTouchSensorTouched(handler: () => void) {
+        mpr121.onAnyTouchSensorTouched(handler);
+    }
+
+    //% group="Berührungssensor 101020872"
+    //% blockId=mpr121_touch_on_released
+    //% block="wenn beliebiger CH losgelassen"
+    //% subcategory="Mechanische Sensoren" weight=59
+    export function onAnyTouchSensorReleased(handler: () => void) {
+        mpr121.onAnyTouchSensorReleased(handler);
+    }
+
+    //% group="Berührungssensor 101020872"
+    //% blockId="mpr121_touch_current_touch_sensor
+    //% block="zuletzt berührter CH"
+    //% subcategory="Mechanische Sensoren" weight=50
+    export function touchSensor(): number {
+        return mpr121.touchSensor();
+    }
 }

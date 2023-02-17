@@ -21,9 +21,9 @@
         "sunlight_si1151.ts",
         "aktoren.ts",
         "RGB_p9813.ts",
-        "main.py",
         "schaltschwein.ts",
-        "tcs34725.ts"
+        "tcs34725.ts",
+        "mpr121.ts"
     ],
     "testFiles": [
         "test.ts"
