@@ -317,7 +317,7 @@ namespace smartfeldSensoren {
     //% sensor.fieldOptions.tooltips="false"
     //% subcategory="Mechanische Sensoren" weight=65
     export function onTouchSensorTouched(sensor: TouchSensor, handler: () => void) {
-        mpr121.onTouchSensorReleased(sensor, handler);
+        mpr121.onTouchSensorTouched(sensor, handler);
     }
 
     //% group="Berührungssensor 101020872"
