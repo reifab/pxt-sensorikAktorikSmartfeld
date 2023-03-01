@@ -253,14 +253,14 @@ namespace smartfeldSensoren {
     /**
     * start Grove Color sensor
     */
-    //% group="Farbsensor 101020341"
+    //% group="Farbsensor 101020341"  weight=30 
     //% blockId="start_colorSensor" block="Start Sensor mit Integrationszeit %atime und Verstärkung %gain"
     //% subcategory="Optische Sensoren"
     export function start(atime: TCS34725_ATIME, gain: TCS34725_AGAIN) {
         tcs34725.start(atime, gain);
     }
 
-    //% group="Farbsensor 101020341"
+    //% group="Farbsensor 101020341"  weight=25 
     //% blockId="getSensorData" block="Gib Farb Daten %colorId"
     //% subcategory="Optische Sensoren"
     export function getSensorData(colorId: RGB): number {

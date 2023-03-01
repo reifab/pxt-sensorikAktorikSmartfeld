@@ -4,7 +4,7 @@
 //% color="#FF33B2" icon="\uf085"
 namespace smartfeldAktoren {
 
-    let strip = new neopixel.Strip();
+    //let strip = new neopixel.Strip();
     let chain = new smartfeldAktoren.Chain();
     let pig = new smartfeldAktoren.Switchpig();
 

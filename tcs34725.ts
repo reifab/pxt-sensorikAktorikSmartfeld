@@ -65,10 +65,10 @@ enum TCS34725_WTIME {
 
 // Parameters for...
 enum RGB {
-    ROT,
-    GRUEN,
-    BLAU,
-    HELL
+    Rot,
+    Gruen,
+    Blau,
+    Hell
 }
 
 // Parameters for setting the persistence register. The persistence register controls the filtering interrupt capabilities of the device.
@@ -322,13 +322,13 @@ namespace smartfeldSensoren {
             let color = 0;
 
             switch (colorId) {
-                case RGB.ROT: color = data.red;
+                case RGB.Rot: color = data.red;
                     break;
-                case RGB.GRUEN: color = data.green;
+                case RGB.Gruen: color = data.green;
                     break;
-                case RGB.BLAU: color = data.blue;
+                case RGB.Blau: color = data.blue;
                     break;
-                case RGB.HELL: color = data.clear;
+                case RGB.Hell: color = data.clear;
                     break;
             }
 
