@@ -35,7 +35,7 @@ namespace smartfeldSensoren {
         MPR121_ADDRESS: number;
         mpr121_ADD: number;
 
-        touchController: TouchController
+        touchController: TouchController;
 
 
         /**

@@ -22,7 +22,8 @@
         "RGB_p9813.ts",
         "schaltschwein.ts",
         "tcs34725.ts",
-        "mpr121.ts"
+        "mpr121.ts",
+        "dfr0792.ts"
     ],
     "testFiles": [
         "test.ts"
@@ -38,5 +39,5 @@
     "supportedTargets": [
         "microbit"
     ],
-    "preferredEditor": "blocksprj"
+    "preferredEditor": "tsprj"
 }

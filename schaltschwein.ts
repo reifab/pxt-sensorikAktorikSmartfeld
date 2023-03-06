@@ -32,9 +32,7 @@ enum MyEnumGroupIDs {
 
 namespace smartfeldAktoren {
 
-
     export class Switchpig {
-
 
         init(): void {
             pins.digitalWritePin(DigitalPin.P1, 1)

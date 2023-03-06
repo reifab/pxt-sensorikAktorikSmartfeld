@@ -14,6 +14,7 @@ namespace smartfeldSensoren {
     let si1151 = new SI1151();
     let tcs34725 = new TCS34725();
     let mpr121 = new MPR121();
+    let dfr0792 = new DFR0792();
 
     //% group="Ultraschallsensor 101020010"
     //% block="Distanz in cm |%pin"
@@ -350,5 +351,24 @@ namespace smartfeldSensoren {
     //% subcategory="Mechanische Sensoren" weight=50
     export function touchSensor(): number {
         return mpr121.touchSensor();
+    }
+
+    //% group="ADKey Board DFR0792"
+    //% blockId="dfr0792_init
+    //% block="Initialisiere ADKey Board |%pin"
+    //% pin.defl=AnalogPin.P0
+    //% subcategory="Mechanische Sensoren" weight=41
+    export function initADKeyBoard(pin: AnalogPin) {
+        if (!dfr0792) {
+            dfr0792.init(pin);
+        }
+    }
+
+    //% group="ADKey Board DFR0792"
+    //% blockId="dfr0792_getPushedNumber
+    //% block="Gib gedrückte Nummer"
+    //% subcategory="Mechanische Sensoren" weight=40
+    export function getPushedNumber(): number {
+        return dfr0792.getPushedNumber();
     }
 }
