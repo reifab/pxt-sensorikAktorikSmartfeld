@@ -14,29 +14,33 @@ namespace smartfeldSensoren {
         analogPin: AnalogPin;
 
         init(pin: AnalogPin): DFR0792 {
-
+            
+            //music.playTone(Note.C, music.beat(BeatFraction.Whole))
             let dfr0792 = new DFR0792();
             dfr0792.analogPin = pin;
-            let i;
-            dfr0792.adcKeyVal = pins.createBuffer(10);
 
-            for (i = 0; i < 10; i++) {
-                dfr0792.adcKeyVal[i] = resValue[i] / (resValue[i] + 22) * maxValue;
-            }
 
             return dfr0792;
         }
 
         getPushedNumber(): number {
 
+            this.adcKeyVal = pins.createBuffer(10);
+            let j;
+            for (j = 0; j < 10; j++) {
+                this.adcKeyVal[j] = resValue[j] / (resValue[j] + 22) * maxValue;
+            }
+
             let adcKeyIn = 0;
             adcKeyIn = pins.analogReadPin(this.analogPin);
-            if (adcKeyIn < (maxValue - maxValue))
+            serial.writeValue("x", this.adcKeyVal[1])
+            //serial.writeValue("x", this.adcKeyVal[1])
+            if (adcKeyIn < (maxValue - precision))
             {
                 let i;
                 for (i = 0; i < 10; i++) {
                     if (adcKeyIn > this.adcKeyVal[i]) {
-                        if ((adcKeyIn - this.adcKeyVal[i]) < maxValue) {
+                        if ((adcKeyIn - this.adcKeyVal[i]) < precision) {
                             return i;
                         }
                     } else {
@@ -47,8 +51,10 @@ namespace smartfeldSensoren {
                 }
                 return -1;
             }
-            
-            return -1;
+            else
+            {
+                return -2;
+            }
         }
     }
 }

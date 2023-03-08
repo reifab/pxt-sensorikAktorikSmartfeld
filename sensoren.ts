@@ -359,9 +359,7 @@ namespace smartfeldSensoren {
     //% pin.defl=AnalogPin.P0
     //% subcategory="Mechanische Sensoren" weight=41
     export function initADKeyBoard(pin: AnalogPin) {
-        if (!dfr0792) {
             dfr0792.init(pin);
-        }
     }
 
     //% group="ADKey Board DFR0792"
