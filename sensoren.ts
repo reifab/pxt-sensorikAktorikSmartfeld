@@ -357,7 +357,7 @@ namespace smartfeldSensoren {
     //% blockId="dfr0792_init
     //% block="Initialisiere ADKey Board |%pin"
     //% pin.defl=AnalogPin.P0
-    //% subcategory="Mechanische Sensoren" weight=41
+    //% subcategory="Mechanische Sensoren" weight=42
     export function initADKeyBoard(pin: AnalogPin) {
             dfr0792.init(pin);
     }
@@ -365,8 +365,18 @@ namespace smartfeldSensoren {
     //% group="ADKey Board DFR0792"
     //% blockId="dfr0792_getPushedNumber
     //% block="Gib gedrückte Nummer"
+    //% pin.defl=AnalogPin.P0
+    //% subcategory="Mechanische Sensoren" weight=41
+    export function getPushedNumber(pin: AnalogPin): number {
+        return dfr0792.getPushedNumber(pin);
+    }
+
+    //% group="ADKey Board DFR0792"
+    //% blockId="dfr0792_numberIsPushed
+    //% block="Gib an ob eine Nummer gedrückt ist"
+    //% pin.defl=AnalogPin.P0
     //% subcategory="Mechanische Sensoren" weight=40
-    export function getPushedNumber(): number {
-        return dfr0792.getPushedNumber();
+    export function numberIsPushed(pin: AnalogPin): boolean {
+        return dfr0792.numberIsPushed(pin);
     }
 }
