@@ -11,20 +11,18 @@ namespace smartfeldSensoren {
     export class DFR0792 {
 
         adcKeyVal: Buffer;
-        
         analogPin: AnalogPin;
-        lastVal: number;
 
         init(pin: AnalogPin): DFR0792 {
             
             let dfr0792 = new DFR0792();
-            dfr0792.analogPin = pin;
+            this.analogPin = pin;
 
             return dfr0792;
         }
 
-        numberIsPushed(pin: AnalogPin): boolean {
-            let adcKeyIn = pins.analogReadPin(pin);
+        numberIsPushed(): boolean {
+            let adcKeyIn = pins.analogReadPin(this.analogPin);
             if(adcKeyIn < (maxValue-precision)){
                 return true;
             }
@@ -33,8 +31,7 @@ namespace smartfeldSensoren {
             }
         }
 
-        getPushedNumber(pin: AnalogPin): number {
-            this.analogPin = pin;
+        getPushedNumber(): number {
             this.adcKeyVal = pins.createBuffer(2*10);
             let j;
             for (j = 0; j < 10; j++) {
