@@ -40,5 +40,7 @@
         "microbit"
     ],
     "preferredEditor": "tsprj",
-    "icon": "https://github.com/SamuelBaw/pxt-sensorikSmartfeld/blob/master/icon_directory/icon.png?raw=true"
+    "icon": [
+        "node_modules/microbit-icons/icon_directory/icon.png"
+    ]
 }
