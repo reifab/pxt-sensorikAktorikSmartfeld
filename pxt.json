@@ -6,8 +6,7 @@
         "radio": "*",
         "microphone": "*",
         "smarttools": "github:51bit/smarttools#v0.3.4",
-        "SSD1306_OLED": "github:tinkertanker/pxt-oled-ssd1306#v2.0.13",
-        "microbit-icons": "file:./icon_directory"
+        "SSD1306_OLED": "github:tinkertanker/pxt-oled-ssd1306#v2.0.13"
     },
     "files": [
         "main.blocks",
@@ -41,7 +40,5 @@
         "microbit"
     ],
     "preferredEditor": "tsprj",
-    "icon": [
-        "node_modules/microbit-icons/icon_directory/icon.png"
-    ]
+    "icon": "https://github.com/SamuelBaw/pxt-sensorikSmartfeld/blob/master/icon_directory/icon.png?raw=true"
 }
