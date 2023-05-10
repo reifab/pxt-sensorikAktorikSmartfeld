@@ -1,7 +1,7 @@
 
 let adcResolution = 10;   //ADC resoltuion
 let maxValue = 2 ** adcResolution;  //Resolution corresponding value
-let precision = 50;   //Admissible error 
+let precision = 20;   //Admissible error 
 
 let resValue = [0, 3, 6.2, 9.1, 15, 24, 33, 51, 100, 220];  //Resistor resistance 
 
