@@ -39,6 +39,6 @@
     "supportedTargets": [
         "microbit"
     ],
-    "preferredEditor": "tsprj",
+    "preferredEditor": "blocksprj",
     "icon": "https://github.com/SamuelBaw/pxt-sensorikSmartfeld/blob/master/icon_directory/icon.png?raw=true"
 }
