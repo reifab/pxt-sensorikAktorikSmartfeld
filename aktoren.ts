@@ -10,16 +10,31 @@ namespace smartfeldAktoren {
     let fourDigitDisplay = new smartfeldAktoren.FourDigitDisplay();
 
 //--------------------------------------------------------------------------------------------------------
+    
+    /**
+    * Set an angle for the 180° Servo
+    * @param pin Which pin the motor is on
+    */
+    //% subcategory="Servo" weight=100 
+    //% group="180° Servo RE-6605910"
+    //% blockId=set_angle 
+    //% block="Setze 180° Servo auf Pin %pin auf Winkel %angle"
+    //% pin.defl=AnalogPin.P0 angle.defl=180
+    export function set_angle(pin: AnalogPin, angle: number): void {
+        pins.servoWritePin(pin, angle)
+    }
+
+//--------------------------------------------------------------------------------------------------------
 
     /**
     * Spins the motor in one direction at full speed
     * @param pin Which pin the motor is on
     */
-    //% subcategory="Servo" weight=100 
+    //% subcategory="Servo" weight=90 
     //% group="360° Servo 114992423"
     //% blockId=spin_one_way 
     //% block="Drehe in eine Richtung auf Pin %pin"
-    export function spin_one_way(pin = AnalogPin.P1): void {
+    export function spin_one_way(pin = AnalogPin.P0, angle: number): void {
         pins.servoWritePin(pin, 180)
     }
 
@@ -76,6 +91,7 @@ namespace smartfeldAktoren {
     export function turn_off_motor(pin = DigitalPin.P1): void {
         pins.digitalWritePin(pin, 0)
     }
+
 
 //--------------------------------------------------------------------------------------------------------
 
