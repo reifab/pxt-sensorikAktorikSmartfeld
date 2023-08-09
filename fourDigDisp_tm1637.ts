@@ -82,7 +82,7 @@ namespace smartfeldAktoren {
         //% clkPin.fieldOptions.tooltips="false" clkPin.fieldOptions.width="250"
         //% dataPin.fieldEditor="gridpicker" dataPin.fieldOptions.columns=4
         //% dataPin.fieldOptions.tooltips="false" dataPin.fieldOptions.width="250"
-        //% tm1637.defl=myDigit
+        //% tm1637.defl=Display
         show(dispData: number) {
             let compare_01: number = dispData % 100;
             let compare_001: number = dispData % 1000;
@@ -153,7 +153,7 @@ namespace smartfeldAktoren {
         //% group="4-Digit Display 104030003"
         //% blockId=grove_tm1637_set_display_level block="%tm1637|Helligkeit auf Level|%level"
         //% level.min=0 level.max=7
-        //% tm1637.defl=myDigit
+        //% tm1637.defl=Display
         set(level: number) {
             this.brightnessLevel = level;
 
@@ -174,7 +174,7 @@ namespace smartfeldAktoren {
         //% blockId=grove_tm1637_display_bit block="%tm1637|Zeige Ziffer|%dispData|an Stelle|%bitAddr"
         //% dispData.min=0 dispData.max=9
         //% bitAddr.min=0 bitAddr.max=3
-        //% tm1637.defl=myDigit
+        //% tm1637.defl=Display
  
         bit(dispData: number, bitAddr: number) {
             if ((dispData == 0x7f) || ((dispData <= 9) && (bitAddr <= 3))) {
@@ -204,7 +204,7 @@ namespace smartfeldAktoren {
         //% subcategory="Display" weight=32
         //% group="4-Digit Display 104030003"
         //% blockId=grove_tm1637_display_point block="%tm1637|Zeige Doppelpunkt |%point|"
-        //% tm1637.defl=myDigit
+        //% tm1637.defl=Display
 
         point(point: boolean) {
             this.pointFlag = point;
@@ -221,7 +221,7 @@ namespace smartfeldAktoren {
         //% subcategory="Display" weight=31
         //% group="4-Digit Display 104030003"
         //% blockId=grove_tm1637_display_clear block="%tm1637|Lösche Displayinhalt"
-        //% tm1637.defl=myDigit
+        //% tm1637.defl=Display
         clear() {
             this.bit(0x7f, 0x00);
             this.bit(0x7f, 0x01);

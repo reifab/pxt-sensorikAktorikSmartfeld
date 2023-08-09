@@ -153,73 +153,73 @@ namespace smartfeldAktoren {
 
     //% subcategory="Display" weight=20 
     //% group="OLED Display 0.96''"
-    //% block="init Display Breite %width Höhe %height"
+    //% block="init OLED Breite %width Höhe %height"
     //% width.defl=128
     //% height.defl=64
-    export function displayInit(width: number, height: number){
+    export function oledInit(width: number, height: number){
         return OLED.init(width, height);
     }
 
     //% subcategory="Display" weight=19 
     //% group="OLED Display 0.96''"
     //% block="schreibe String %str"
-    export function displayWriteStr(str: string){
+    export function oledWriteStr(str: string){
         return OLED.writeString(str);
     }
 
     //% subcategory="Display" weight=18 
     //% group="OLED Display 0.96''"
     //% block="schreibe Nummer %num"
-    export function displayWriteNum(num: number) {
+    export function oledWriteNum(num: number) {
         return OLED.writeNum(num);
     }
 
     //% subcategory="Display" weight=17 
     //% group="OLED Display 0.96''"
     //% block="schreibe String und Zeilenumbruch %str"
-    export function displayWriteStrNewLine(str: string) {
+    export function oledWriteStrNewLine(str: string) {
         return OLED.writeStringNewLine(str);
     }
 
     //% subcategory="Display" weight=16 
     //% group="OLED Display 0.96''"
     //% block="schreibe Nummer und Zeilenumbruch %num"
-    export function displayWriteNumNewLine(num: number) {
+    export function oledWriteNumNewLine(num: number) {
         return OLED.writeNumNewLine(num);
     }
 
     //% subcategory="Display" weight=15 
     //% group="OLED Display 0.96''"
     //% block="Zeilenumbruch"
-    export function displayNewLine() {
+    export function oledNewLine() {
         return OLED.newLine();
     }
 
     //% subcategory="Display" weight=14 
     //% group="OLED Display 0.96''"
     //% block="Lösche Displayinhalt"
-    export function displayClear(){
+    export function oledClear(){
         return OLED.clear();
     }
 
     //% subcategory="Display" weight=13 
     //% group="OLED Display 0.96''"
     //% block="zeichne Ladebalken bei %percent Prozent"
-    export function displayLoadingBar(percent: number){
+    export function oledLoadingBar(percent: number){
         return OLED.drawLoading(percent);
     }
 
     //% subcategory="Display" weight=12 
     //% group="OLED Display 0.96''"
     //% block="zeichne Linie von:|x: %x0 y: %y0 bis:| x: %x1 y: %y1""
-    export function displayDrawLine(x0: number, y0: number, x1: number, y1: number)  {
+    export function oledDrawLine(x0: number, y0: number, x1: number, y1: number)  {
         return OLED.drawLine(x0,y0,x1,y1);
     }
 
     //% subcategory="Display" weight=11 
     //% group="OLED Display 0.96''"
     //% block="zeichne Rechteck von:|x: %x0 y: %y0 bis:| x: %x1 y: %y1""
-    export function displaydrawRectangle(x0: number, y0: number, x1: number, y1: number) {
+    export function oledDrawRectangle(x0: number, y0: number, x1: number, y1: number) {
         return OLED.drawRectangle(x0, y0, x1, y1);
     }
 
@@ -255,7 +255,7 @@ namespace smartfeldAktoren {
     //% group="4-Digit Display 104030003"
     //% block="4-Digit Display bei Clock Pin %clkPin|und Daten Pin %dataPin|"
     //% trackArgs=0,2
-    //% blockSetVariable=myDigit
+    //% blockSetVariable=Display
     //% clkPin.defl=DigitalPin.P0 dataPin.defl=DigitalPin.P14
     export function erstelle_Display(clkPin: DigitalPin, dataPin: DigitalPin): FourDigitDisplay {
         return fourDigitDisplay.createDisplay(clkPin, dataPin);
