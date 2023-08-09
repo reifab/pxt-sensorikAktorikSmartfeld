@@ -151,7 +151,7 @@ namespace smartfeldAktoren {
 
         //% subcategory="Display" weight=34 
         //% group="4-Digit Display 104030003"
-        //% blockId=grove_tm1637_set_display_level block="%tm1637|Helligkeit auf|%level Prozent"
+        //% blockId=grove_tm1637_set_display_level block="%tm1637|Helligkeit auf Level|%level"
         //% level.min=0 level.max=7
         //% tm1637.defl=myDigit
         set(level: number) {
