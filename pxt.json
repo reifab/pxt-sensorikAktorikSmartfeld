@@ -23,7 +23,8 @@
         "schaltschwein.ts",
         "tcs34725.ts",
         "mpr121.ts",
-        "dfr0792.ts"
+        "dfr0792.ts",
+        "fourDigDisp_tm1637.ts"
     ],
     "testFiles": [
         "test.ts"
@@ -32,7 +33,7 @@
         "branch": "v4.0.18",
         "tag": "v4.0.18",
         "commits": "https://github.com/microsoft/pxt-microbit/commits/b9d2eeff8116b75fa50f663091b0e3acd800b7bc",
-        "target": "5.0.12",
+        "target": "6.0.17",
         "pxt": "7.0.14",
         "targetId": "microbit"
     },

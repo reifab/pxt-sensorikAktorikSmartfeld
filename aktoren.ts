@@ -7,6 +7,7 @@ namespace smartfeldAktoren {
     //let strip = new neopixel.Strip();
     let chain = new smartfeldAktoren.Chain();
     let pig = new smartfeldAktoren.Switchpig();
+    let fourDigitDisplay = new smartfeldAktoren.FourDigitDisplay();
 
 //--------------------------------------------------------------------------------------------------------
 
@@ -90,15 +91,9 @@ namespace smartfeldAktoren {
     export function createChain(clkPin: DigitalPin, dataPin: DigitalPin, numberOfLeds: number = 1): Chain {
         return chain.init(clkPin, dataPin, numberOfLeds) 
     }
-
-    //% subcategory="LED" weight=89 
-    //% group="Verkettbare RGB 104020048"
     export function setOneRGB(numberOfLED: number, red: number, green: number, blue: number) {
         return chain.setColorJustOne(numberOfLED, red, green, blue);
     }
-
-    //% subcategory="LED" weight=88 
-    //% group="Verkettbare RGB 104020048"
     export function setColorWholeChain(red: number, green: number, blue: number) {
         return chain.setColorChain(red, green, blue);
     }
@@ -157,7 +152,7 @@ namespace smartfeldAktoren {
     //--------------------------------------------------------------------------------------------------------
 
     //% subcategory="Display" weight=20 
-    //% group="OLED Display 0.96'', SSD1306"
+    //% group="OLED Display 0.96''"
     //% block="init Display Breite %width Höhe %height"
     //% width.defl=128
     //% height.defl=64
@@ -166,63 +161,63 @@ namespace smartfeldAktoren {
     }
 
     //% subcategory="Display" weight=19 
-    //% group="OLED Display 0.96'', SSD1306"
+    //% group="OLED Display 0.96''"
     //% block="schreibe String %str"
     export function displayWriteStr(str: string){
         return OLED.writeString(str);
     }
 
     //% subcategory="Display" weight=18 
-    //% group="OLED Display 0.96'', SSD1306"
+    //% group="OLED Display 0.96''"
     //% block="schreibe Nummer %num"
     export function displayWriteNum(num: number) {
         return OLED.writeNum(num);
     }
 
     //% subcategory="Display" weight=17 
-    //% group="OLED Display 0.96'', SSD1306"
+    //% group="OLED Display 0.96''"
     //% block="schreibe String und Zeilenumbruch %str"
     export function displayWriteStrNewLine(str: string) {
         return OLED.writeStringNewLine(str);
     }
 
     //% subcategory="Display" weight=16 
-    //% group="OLED Display 0.96'', SSD1306"
+    //% group="OLED Display 0.96''"
     //% block="schreibe Nummer und Zeilenumbruch %num"
     export function displayWriteNumNewLine(num: number) {
         return OLED.writeNumNewLine(num);
     }
 
     //% subcategory="Display" weight=15 
-    //% group="OLED Display 0.96'', SSD1306"
+    //% group="OLED Display 0.96''"
     //% block="Zeilenumbruch"
     export function displayNewLine() {
         return OLED.newLine();
     }
 
     //% subcategory="Display" weight=14 
-    //% group="OLED Display 0.96'', SSD1306"
+    //% group="OLED Display 0.96''"
     //% block="Lösche Displayinhalt"
     export function displayClear(){
         return OLED.clear();
     }
 
     //% subcategory="Display" weight=13 
-    //% group="OLED Display 0.96'', SSD1306"
+    //% group="OLED Display 0.96''"
     //% block="zeichne Ladebalken bei %percent Prozent"
     export function displayLoadingBar(percent: number){
         return OLED.drawLoading(percent);
     }
 
     //% subcategory="Display" weight=12 
-    //% group="OLED Display 0.96'', SSD1306"
+    //% group="OLED Display 0.96''"
     //% block="zeichne Linie von:|x: %x0 y: %y0 bis:| x: %x1 y: %y1""
     export function displayDrawLine(x0: number, y0: number, x1: number, y1: number)  {
         return OLED.drawLine(x0,y0,x1,y1);
     }
 
     //% subcategory="Display" weight=11 
-    //% group="OLED Display 0.96'', SSD1306"
+    //% group="OLED Display 0.96''"
     //% block="zeichne Rechteck von:|x: %x0 y: %y0 bis:| x: %x1 y: %y1""
     export function displaydrawRectangle(x0: number, y0: number, x1: number, y1: number) {
         return OLED.drawRectangle(x0, y0, x1, y1);
@@ -249,5 +244,35 @@ namespace smartfeldAktoren {
     //% block="Schalte Steckdose auf der %ch %state"
     export function mySelectRfGroupID(rfGroupID: MyEnumGroupIDs): void {
         pig.selectRfGroupID(rfGroupID);
+    }
+
+    //--------------------------------------------------------------------------------------------------------
+
+    /** 
+     * Erstelle eine 4-Digit Display
+     */
+    //% subcategory="Display" weight=39
+    //% group="4-Digit Display 104030003"
+    //% block="4-Digit Display bei Clock Pin %clkPin|und Daten Pin %dataPin|"
+    //% trackArgs=0,2
+    //% blockSetVariable=myDigit
+    //% clkPin.defl=DigitalPin.P0 dataPin.defl=DigitalPin.P14
+    export function erstelle_Display(clkPin: DigitalPin, dataPin: DigitalPin): FourDigitDisplay {
+        return fourDigitDisplay.createDisplay(clkPin, dataPin);
+    }
+    export function zeige_Zahl(zahl: number) {
+        return fourDigitDisplay.show(zahl);
+    }
+    export function setze_Helligkeit(helligkeit: number) {
+        return fourDigitDisplay.set(helligkeit);
+    }
+    export function zeige_Ziffer(ziffer: number, stelle: number) {
+        return fourDigitDisplay.bit(ziffer, stelle);
+    }
+    export function zeige_Doppelpunkt(doppelpunkt: boolean) {
+        return fourDigitDisplay.point(doppelpunkt);
+    }
+    export function loesche_display() {
+        return fourDigitDisplay.clear();
     }
 }
