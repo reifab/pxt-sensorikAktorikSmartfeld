@@ -24,7 +24,8 @@
         "tcs34725.ts",
         "mpr121.ts",
         "dfr0792.ts",
-        "fourDigDisp_tm1637.ts"
+        "fourDigDisp_tm1637.ts",
+        "tempHum_aht20.ts"
     ],
     "testFiles": [
         "test.ts"

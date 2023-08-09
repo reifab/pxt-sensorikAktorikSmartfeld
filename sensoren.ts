@@ -15,6 +15,7 @@ namespace smartfeldSensoren {
     let tcs34725 = new TCS34725();
     let mpr121 = new MPR121();
     let dfr0792 = new DFR0792();
+    let aht20 = new AHT20();
 
     //% group="Ultraschallsensor 101020010"
     //% block="Distanz in cm |%pin"
@@ -169,7 +170,7 @@ namespace smartfeldSensoren {
     */
     //% group="Gassensor 101020512"
     //% block="init Gassensor"
-    //% subcategory="Umweltsensoren" weight=100
+    //% subcategory="Umweltsensoren" weight=69
     export function initGas() {
         //if (!sgp30) {
         sgp30.init();
@@ -181,7 +182,7 @@ namespace smartfeldSensoren {
     */
     //% group="Gassensor 101020512"
     //% block="gib tVOC"
-    //% subcategory="Umweltsensoren" weight=60
+    //% subcategory="Umweltsensoren" weight=68
     export function measReadtVOC(): number {
         //if (!sgp30) {
         return sgp30.sgp30_measRead_tVOC();
@@ -193,7 +194,7 @@ namespace smartfeldSensoren {
     */
     //% group="Gassensor 101020512"
     //% block="gib CO2eq"
-    //% subcategory="Umweltsensoren" weight=40
+    //% subcategory="Umweltsensoren" weight=67
     export function measReadCO2eq(): number {
         //if (!sgp30) {
         return sgp30.sgp30_measRead_CO2eq();
@@ -289,7 +290,7 @@ namespace smartfeldSensoren {
         return uvIndex;
     }
 
-    //% group="Bodenfeuchtesensor 101020614"
+    //% group="Bodenfeuchtesensor 101020614" weight=50
     //% block="gib Bodenfeuchte Pin |%pin"
     //% pin.defl=AnalogPin.P0
     //% subcategory="Umweltsensoren"
@@ -377,4 +378,29 @@ namespace smartfeldSensoren {
     export function numberIsPushed(): boolean {
         return dfr0792.numberIsPushed();
     }
+
+    //% subcategory="Umweltsensoren" weight=100
+    //% group="Temperatur- und Luftfeuchtigkeitssensor 101990644"
+    //% block="init Temperatur- und Luftfeuchtigkeitssensor"
+    //% trackArgs=0,2
+    //% blockSetVariable=TempHumSensor
+    export function init_tempHum(): AHT20 {
+        return aht20.init();
+    }
+   
+    //% subcategory="Umweltsensoren" weight=98
+    //% group="Temperatur- und Luftfeuchtigkeitssensor 101990644"
+    //% block="Lese Temperatur(°C))"
+    export function lese_temperatur() {
+        return aht20.aht20ReadTemperatureC();
+    }
+
+    //% subcategory="Umweltsensoren" weight=97
+    //% group="Temperatur- und Luftfeuchtigkeitssensor 101990644"
+    //% block="Lese Luftfeuchtigkeit"
+    export function lese_luftfeuchtigkeit() {
+        return aht20.aht20ReadHumidity();
+    }
+
+
 }
