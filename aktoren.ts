@@ -33,8 +33,8 @@ namespace smartfeldAktoren {
     //% subcategory="Servo" weight=90 
     //% group="360° Servo 114992423"
     //% blockId=spin_one_way 
-    //% block="Drehe in eine Richtung auf Pin %pin"
-    export function spin_one_way(pin = AnalogPin.P0, angle: number): void {
+    //% block="Drehe 360° Servo in eine Richtung auf Pin %pin"
+    export function spin_one_way(pin = AnalogPin.P0): void {
         pins.servoWritePin(pin, 180)
     }
 
@@ -45,7 +45,7 @@ namespace smartfeldAktoren {
     //% subcategory="Servo" weight=80 
     //% group="360° Servo 114992423"
     //% blockId=spin_other_way 
-    //% block="Drehe in andere Richtung auf Pin %pin"
+    //% block="Drehe 360° Servo in andere Richtung auf Pin %pin"
     export function spin_other_way(pin = AnalogPin.P2): void {
         pins.servoWritePin(pin, 0)
     }
@@ -58,7 +58,7 @@ namespace smartfeldAktoren {
     //% subcategory="Servo" weight=60 
     //% group="360° Servo 114992423"
     //% blockId=spin_one_way_with_speed
-    //% block="Drehe in eine Richtung auf Pin %pin | mit Geschwindigkeit %speed"
+    //% block="Drehe 360° Servo in eine Richtung auf Pin %pin | mit Geschwindigkeit %speed"
     //% speed.min=0 speed.max=100
     export function spin_one_way_with_speed(pin = AnalogPin.P1, speed = 50): void {
         let spin = (speed * 90) / 100 + 90
@@ -73,7 +73,7 @@ namespace smartfeldAktoren {
     //% subcategory="Servo" weight=40 
     //% group="360° Servo 114992423"
     //% blockId=spin_other_way_with_speed
-    //% block="Drehe in andere Richtung auf Pin  %pin | mit Geschwindigkeit %speed"
+    //% block="Drehe 360° Servo in andere Richtung auf Pin  %pin | mit Geschwindigkeit %speed"
     //% speed.min=0 speed.max=100
     export function spin_other_way_with_speed(pin = AnalogPin.P2, speed = 50): void {
         let spin = 90 - (speed * 90) / 100
@@ -87,7 +87,7 @@ namespace smartfeldAktoren {
     //% subcategory="Servo" weight=20 
     //% group="360° Servo 114992423"
     //% blockId=turn_off_motor 
-    //% block="Schalte Servo auf Pin %pin aus"
+    //% block="Schalte 360° Servo auf Pin %pin aus"
     export function turn_off_motor(pin = DigitalPin.P1): void {
         pins.digitalWritePin(pin, 0)
     }
