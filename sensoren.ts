@@ -284,7 +284,7 @@ namespace smartfeldSensoren {
 
         rangeInAnalog = pins.analogReadPin(pin);
         sensorVoltage = rangeInAnalog / 1024 * 3.3;
-        uvIndex = Math.round(sensorVoltage / 0.1 *1000)/1000;
+        uvIndex = Math.round(sensorVoltage / 0.1);
 
         basic.pause(50);
         return uvIndex;
