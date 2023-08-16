@@ -92,6 +92,52 @@ namespace smartfeldAktoren {
         pins.digitalWritePin(pin, 0)
     }
 
+//--------------------------------------------------------------------------------------------------------
+
+    // Statusbit für toggle-Funktion der LED
+    let ledStatus = 0; 
+
+    /**
+     * Switch LED on
+    */
+    //% subcategory="LED" weight=100 
+    //% group="LED Socket 104030005"
+    //% block="LED ein |%pin"
+    export function ledEin(pin: DigitalPin) {
+        ledStatus = 1;
+        pins.digitalWritePin(pin, ledStatus);
+        basic.pause(50);
+    }
+    /**
+     * Switch LED off
+    */
+    //% subcategory="LED" weight=99 
+    //% group="LED Socket 104030005"
+    //% block="LED aus |%pin"
+    export function ledAus(pin: DigitalPin) {
+        ledStatus = 0;
+        pins.digitalWritePin(pin, ledStatus);
+        basic.pause(50);
+    }
+
+    /**
+    * Toggle LED 
+    */
+    //% subcategory="LED" weight=99 
+    //% group="LED Socket 104030005"
+    //% block="LED umschalten |%pin"
+    export function ledUmschalten(pin: DigitalPin) {
+        if(ledStatus)
+        {
+            ledStatus = 0;
+        } 
+        else
+        {
+            ledStatus = 1;
+        }
+        pins.digitalWritePin(pin, ledStatus);
+        basic.pause(50);
+    }
 
 //--------------------------------------------------------------------------------------------------------
 
