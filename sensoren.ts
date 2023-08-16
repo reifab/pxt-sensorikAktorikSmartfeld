@@ -226,7 +226,6 @@ namespace smartfeldSensoren {
     //% block="init Sonnenlicht Sensor"
     //% subcategory="Optische Sensoren"
     export function initSunlight() {
-        //if (!sgp30) {
         si1151.init();
     }
 
@@ -378,29 +377,19 @@ namespace smartfeldSensoren {
     export function numberIsPushed(): boolean {
         return dfr0792.numberIsPushed();
     }
-
-    //% subcategory="Umweltsensoren" weight=100
-    //% group="Temperatur- und Luftfeuchtigkeitssensor 101990644"
-    //% block="init Temperatur- und Luftfeuchtigkeitssensor"
-    //% trackArgs=0,2
-    //% blockSetVariable=TempHumSensor
-    export function init_tempHum(): AHT20 {
-        return aht20.init();
-    }
    
     //% subcategory="Umweltsensoren" weight=98
     //% group="Temperatur- und Luftfeuchtigkeitssensor 101990644"
-    //% block="Lese Temperatur(°C))"
+    //% block="Lese Temperatur(°C)"
     export function lese_temperatur() {
-        return aht20.aht20ReadTemperatureC();
+        return Math.round(aht20.aht20ReadTemperatureC() * 100) / 100;
     }
 
     //% subcategory="Umweltsensoren" weight=97
     //% group="Temperatur- und Luftfeuchtigkeitssensor 101990644"
-    //% block="Lese Luftfeuchtigkeit"
+    //% block="Lese Luftfeuchtigkeit(%)"
     export function lese_luftfeuchtigkeit() {
-        return aht20.aht20ReadHumidity();
+        return Math.round(aht20.aht20ReadHumidity() * 100) / 100;
     }
-
 
 }

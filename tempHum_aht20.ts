@@ -8,19 +8,12 @@ namespace smartfeldSensoren {
 
         address: number;
        
-        init(): AHT20 {
-            let tempHum = new AHT20();
-            this.address = 0x38;
-
-            return tempHum;
-        }
-
         private initialization() {
             const buf = pins.createBuffer(3);
             buf[0] = 0xbe;
             buf[1] = 0x08;
             buf[2] = 0x00;
-            pins.i2cWriteBuffer(this.address, buf, false);
+            pins.i2cWriteBuffer(0x38, buf, false);
             basic.pause(10);
         }
 
@@ -29,20 +22,20 @@ namespace smartfeldSensoren {
             buf[0] = 0xac;
             buf[1] = 0x33;
             buf[2] = 0x00;
-            pins.i2cWriteBuffer(this.address, buf, false);
+            pins.i2cWriteBuffer(0x38, buf, false);
             basic.pause(80);
         }
 
         private getState(): { isBusy: boolean, calib: boolean } {
-            const buf = pins.i2cReadBuffer(this.address, 1, false);
+            const buf = pins.i2cReadBuffer(0x38, 1, false);
             const busy = buf[0] & 0x80 ? true : false;
             const calibrated = buf[0] & 0x08 ? true : false;
 
             return { isBusy: busy, calib: calibrated };
         }
 
-        private read(): { hum: number, temp: number } {
-            const buf = pins.i2cReadBuffer(this.address, 7, false);
+        private read(): { Hum: number, Temp: number } {
+            const buf = pins.i2cReadBuffer(0x38, 7, false);
 
             const crc8 = AHT20.calcCRC8(buf, 0, 6);
             if (buf[6] != crc8) return null;
@@ -50,7 +43,7 @@ namespace smartfeldSensoren {
             const humidity = ((buf[1] << 12) + (buf[2] << 4) + (buf[3] >> 4)) * 100 / 1048576;
             const temperature = (((buf[3] & 0x0f) << 16) + (buf[4] << 8) + buf[5]) * 200 / 1048576 - 50;
 
-            return { hum: humidity, temp: temperature };
+            return { Hum: humidity, Temp: temperature };
         }
 
         private static calcCRC8(buf: Buffer, offset: number, size: number): number {
@@ -71,9 +64,8 @@ namespace smartfeldSensoren {
             return crc8;
         }
     
-
-        private readTempHum(): { hum: number, temp: number } {
-
+        private readTempHum(): { Hum: number, Temp: number } {
+            
             if (!this.getState().calib) {
                 this.initialization();
                 if (!this.getState().calib) return null;
@@ -86,7 +78,7 @@ namespace smartfeldSensoren {
                 basic.pause(10);
             }
 
-            return this.readTempHum();
+            return this.read();
         }
 
         /**
@@ -94,11 +86,13 @@ namespace smartfeldSensoren {
          */
 
         aht20ReadTemperatureC(): number {
+
+
             //const aht20 = new grove.sensors.AHT20();
             const val = this.readTempHum();
             if (val == null) return null;
 
-            return val.temp;
+            return val.Temp;
         }
 
         aht20ReadHumidity(): number {
@@ -106,7 +100,7 @@ namespace smartfeldSensoren {
             const val = this.readTempHum();
             if (val == null) return null;
 
-            return val.hum;
+            return val.Hum;
         }
     }
 }

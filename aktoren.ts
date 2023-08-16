@@ -142,18 +142,18 @@ namespace smartfeldAktoren {
 //--------------------------------------------------------------------------------------------------------
 
     /**
-    * Erstelle eine RGB Kette
+    * Erstelle eine LED Kette
     */
     //% subcategory="LED" weight=90 
-    //% group="Verkettbare RGB 104020048"
-    //% block="Verkettbare RGB bei Clock Pin %clkPin|und Daten Pin %dataPin|mit  %numberOfLeds RGBs"
+    //% group="Verkettbare LED 104020048"
+    //% block="Verkettbare LED bei Clock Pin %clkPin|und Daten Pin %dataPin|mit  %numberOfLeds LEDs"
     //% trackArgs=0,2
     //% blockSetVariable=Kette
     //% clkPin.defl=DigitalPin.P0 dataPin.defl=DigitalPin.P14 numberOfLeds.defl=1
     export function createChain(clkPin: DigitalPin, dataPin: DigitalPin, numberOfLeds: number = 1): Chain {
         return chain.init(clkPin, dataPin, numberOfLeds) 
     }
-    export function setOneRGB(numberOfLED: number, red: number, green: number, blue: number) {
+    export function setOneLED(numberOfLED: number, red: number, green: number, blue: number) {
         return chain.setColorJustOne(numberOfLED, red, green, blue);
     }
     export function setColorWholeChain(red: number, green: number, blue: number) {

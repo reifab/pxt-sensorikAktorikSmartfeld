@@ -65,8 +65,8 @@ namespace smartfeldAktoren {
         }
         
         //% subcategory="LED" weight=83 
-        //% group="Verkettbare RGB 104020048"
-        //% blockID="chain_set_all" block="%chain|setze alle RGBs der Kette auf rot %red|grün %green|blau %blue"
+        //% group="Verkettbare LED 104020048"
+        //% blockID="chain_set_all" block="%chain|setze alle LEDs der Kette auf rot %red|grün %green|blau %blue"
         //% chain.defl=Kette
         setColorChain(red: number, green: number, blue: number) {
             let i;
@@ -76,16 +76,16 @@ namespace smartfeldAktoren {
         }
         
         //% subcategory="LED" weight=83 
-        //% group="Verkettbare RGB 104020048"
-        //% blockID="chain_set_one" block="%chain|setze RGB Nummer %numberOfRGB| auf RGB rot %red|grün %green|blau %blue"
+        //% group="Verkettbare LED 104020048"
+        //% blockID="chain_set_one" block="%chain|setze LED Nummer %numberOfRGB| auf LED rot %red|grün %green|blau %blue"
         //% chain.defl=Kette
         setColorJustOne(numberOfRGB: number, red: number, green: number, blue: number) {
             this.setColorRGB(numberOfRGB, red, green, blue);
         }
 
         //% subcategory="LED" weight=84 
-        //% group="Verkettbare RGB 104020048"
-        //% blockId ="chain_set_one" block="%chain|setze nur eine der Kette auf RGB red %red|green %green|blue %blue"
+        //% group="Verkettbare LED 104020048"
+        //% blockId ="chain_set_one" block="%chain|setze nur eine der Kette auf LED red %red|green %green|blue %blue"
         //% chain.defl=Kette
         setColorOneRGB(red: number, green: number, blue: number) {
             this.setColorRGB(0, red, green, blue);
