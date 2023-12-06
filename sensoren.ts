@@ -9,13 +9,12 @@ namespace smartfeldSensoren {
     const gestureEventId = 3100;
     let lastGesture = GroveGesture.None;
     let paj7620 = new PAJ7620();
-    //let bme680 = new BME680();
-    let sgp30 = new SGP30();
     let si1151 = new SI1151();
     let tcs34725 = new TCS34725();
     let mpr121 = new MPR121();
     let dfr0792 = new DFR0792();
     let aht20 = new AHT20();
+    let scd30 = new SCD30();
 
     //% group="Ultraschallsensor 101020010"
     //% block="Distanz in cm |%pin"
@@ -165,40 +164,67 @@ namespace smartfeldSensoren {
     }
 
     /**
-    * init Grove Gas module
-    * 
+    * Init gas sensor SCD30
+    *
     */
-    //% group="Gassensor 101020512"
+    //% group="Gassensor 101020634"
     //% block="init Gassensor"
-    //% subcategory="Umweltsensoren" weight=69
-    export function initGas() {
-        //if (!sgp30) {
-        sgp30.init();
+    //% subcategory="Umweltsensoren" weight=80
+    export function gas_init() {
+        control.inBackground(() => {
+            scd30.enableContinuousMeasurement()
+            while (true) {
+                scd30.readMeasurement()
+                basic.pause(2000)
+            }
+        })
+    }
+
+
+    /**
+    * Calibrate SCD30 to use actual value as 400 ppm
+    *
+    */
+    //% group="Gassensor 101020634"
+    //% block="setze als 400ppm Kalibrationswert"
+    //% subcategory="Umweltsensoren" weight=79
+    export function setGasCalibration() {
+        return scd30.setCalibration400ppm();
     }
 
     /**
-    * Read tVOC value of gas sensor
-    * 
+    * Read CO2eq value of gas sensor SCD30
+    *
     */
-    //% group="Gassensor 101020512"
-    //% block="gib tVOC"
-    //% subcategory="Umweltsensoren" weight=68
-    export function measReadtVOC(): number {
-        //if (!sgp30) {
-        return sgp30.sgp30_measRead_tVOC();
-    }
-
-    /**
-    * Read CO2eq value of gas sensor
-    * 
-    */
-    //% group="Gassensor 101020512"
+    //% group="Gassensor 101020634"
     //% block="gib CO2eq"
-    //% subcategory="Umweltsensoren" weight=67
-    export function measReadCO2eq(): number {
-        //if (!sgp30) {
-        return sgp30.sgp30_measRead_CO2eq();
+    //% subcategory="Umweltsensoren" weight=77
+    export function readGasCO2eq(): number {
+        return scd30.readCO2();
     }
+
+    /**
+    * Read temperature value of gas sensor SCD30
+    *
+    */
+    //% group="Gassensor 101020634"
+    //% block="gib Temperatur"
+    //% subcategory="Umweltsensoren" weight=76
+    export function readGasTemp(): number {
+        return scd30.readTemperature();
+    }
+
+    /**
+    * Read humidity value of gas sensor SCD30
+    *
+    */
+    //% group="Gassensor 101020634"
+    //% block="gib Luftfeuchtigkeit"
+    //% subcategory="Umweltsensoren" weight=75
+    export function readGasHum(): number {
+        return scd30.readHumidity();
+    } 
+
 
     //% group="Potentiometer 101020036"
     //% block="Poti Prozentzahl Pin |%pin LED |%led"
