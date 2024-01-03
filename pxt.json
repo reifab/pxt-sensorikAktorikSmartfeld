@@ -24,7 +24,11 @@
         "mpr121.ts",
         "dfr0792.ts",
         "fourDigDisp_tm1637.ts",
-        "tempHum_aht20.ts"
+        "tempHum_aht20.ts",
+        "_locales/en/pxt-SensorikSmartfeld-strings.json",
+        "_locales/en/pxt-SensorikSmartfeld-jsdoc-strings.json",
+        "_locales/nl/pxt-SensorikSmartfeld-strings.json",
+        "_locales/nl/pxt-SensorikSmartfeld-jsdoc-strings.json"
     ],
     "testFiles": [
         "test.ts"
