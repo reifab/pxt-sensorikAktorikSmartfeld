@@ -15,6 +15,7 @@ namespace smartfeldSensoren {
     let dfr0792 = new DFR0792();
     let aht20 = new AHT20();
     let scd30 = new SCD30();
+    let sen0322 = new SEN0322();
 
     //% group="Ultraschallsensor 101020010"
     //% block="Distanz in cm |%pin"
@@ -418,4 +419,28 @@ namespace smartfeldSensoren {
         return Math.round(aht20.aht20ReadHumidity() * 100) / 100;
     }
 
+    //% subcategory="Umweltsensoren" weight=96
+    //% group="Sauerstoffsensor SEN0322"
+    //% block="init Sauerstoffsensor ID %id"
+    export function init_sauerstoff(id: bigint) {
+        if (this.id < 0 || this.id > 3) {
+            sen0322.setAddress(0);
+        }
+        else {
+            sen0322.setAddress(id);
+        }
+    }
+
+    //% subcategory="Umweltsensoren" weight=95
+    //% group="Sauerstoffsensor SEN0322"
+    //% block="Lese Sauerstoffsättigung(%) %meanNum"
+    export function lese_sauerstoff(meanNum: bigint) {
+        if (this.meanNum < 1) {
+            this.meanNum = 1;
+        }
+        if (this.meanNum > 100) {
+            this.meanNum = 100;
+        }
+        return sen0322.getOxygenData(this.meanNum);
+    }
 }
