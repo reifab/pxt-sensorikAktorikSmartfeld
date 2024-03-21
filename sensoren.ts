@@ -423,7 +423,7 @@ namespace smartfeldSensoren {
     //% group="Sauerstoffsensor SEN0322"
     //% block="init Sauerstoffsensor ID %id"
     //% id.min=0 id.max=3
-    export function init_sauerstoff(id: bigint) {
+    export function init_sauerstoff(id = 0) {
         if (this.id < 0 || this.id > 3) {
             sen0322.setAddress(0);
         }
@@ -434,9 +434,9 @@ namespace smartfeldSensoren {
 
     //% subcategory="Umweltsensoren" weight=95
     //% group="Sauerstoffsensor SEN0322"
-    //% block="Lese Sauerstoffsättigung(%) %meanNum"
+    //% block="Lese Sauerstoffsättigung(Prozent) %meanNum"
     //% meanNum.min=1 meanNum.max=100
-    export function lese_sauerstoff(meanNum: bigint) {
+    export function lese_sauerstoff(meanNum = 1) {
         if (this.meanNum < 1) {
             this.meanNum = 1;
         }
