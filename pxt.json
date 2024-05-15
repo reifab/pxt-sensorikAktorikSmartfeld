@@ -28,7 +28,8 @@
         "_locales/en/pxt-SensorikSmartfeld-strings.json",
         "_locales/en/pxt-SensorikSmartfeld-jsdoc-strings.json",
         "_locales/nl/pxt-SensorikSmartfeld-strings.json",
-        "_locales/nl/pxt-SensorikSmartfeld-jsdoc-strings.json"
+        "_locales/nl/pxt-SensorikSmartfeld-jsdoc-strings.json",
+        "sen0322.ts"
     ],
     "testFiles": [
         "test.ts"
