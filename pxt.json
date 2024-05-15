@@ -37,13 +37,13 @@
         "branch": "v4.0.18",
         "tag": "v4.0.18",
         "commits": "https://github.com/microsoft/pxt-microbit/commits/b9d2eeff8116b75fa50f663091b0e3acd800b7bc",
-        "target": "6.0.17",
+        "target": "6.0.28",
         "pxt": "7.0.14",
         "targetId": "microbit"
     },
     "supportedTargets": [
         "microbit"
     ],
-    "preferredEditor": "blocksprj",
+    "preferredEditor": "tsprj",
     "icon": "https://github.com/SamuelBaw/pxt-sensorikSmartfeld/blob/master/icon_directory/icon.png?raw=true"
 }
